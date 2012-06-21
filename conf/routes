@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                        controllers.Application.index()
+
+
+# Formulaire 
+GET     /form            controllers.Formulaire.initForm()
+POST	/form            controllers.Formulaire.submitForm()
+
+# Affichage test
+
+GET /show/:id			 controllers.Application.affichagerId(id: Long)
+GET /simu/:classe/:lvl       controllers.Application.affichagerPerso(classe: String,lvl: java.lang.Integer)
+
+# Map static resources from the /public folder to the /assets URL path
+GET /assets/*file            controllers.Assets.at(path="/public", file)
+
+GET /showAll controllers.Application.showAll()
+
+GET /testLoot controllers.Application.test()

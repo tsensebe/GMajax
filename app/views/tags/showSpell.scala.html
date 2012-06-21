@@ -1,0 +1,14 @@
+@(spell : Spell, perso : Perso)
+
+@import utils.LootUtil
+@import _root_.theorycraft._
+
+<p class="spellName"><a href="@spell.toolKitLink">@spell.description</a></p>
+<ul>
+	<li>Dps : @SpellFormula.channelingDps(spell.dmgMultiplicator,
+										  LootUtil.dmgMin(perso.loots),
+										  LootUtil.dmgMax(perso.loots),
+								          LootUtil.attSpd(perso.loots),
+								          perso.bonusDmg())</li>
+	<li>Cps : @SpellFormula.channelingCps(20,LootUtil.attSpd(perso.loots))</li>
+</ul>

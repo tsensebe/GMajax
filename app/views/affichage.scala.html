@@ -1,0 +1,40 @@
+@(perso: Perso, loots : List[Loot], spells : Set[Spell])
+
+@import tags._
+
+@mainTemplate("GerardMajax"){
+
+<div class="container_12">
+
+		@* Affichage des caracs *@
+		<div class="grid_3">
+			<h4>Attributs</h4>
+			@showPerso(perso)
+		</div>
+		
+		@* Affichage des loots *@
+		<div class="grid_4">
+			<h4>Equipement</h4>
+			@if(loots != null){
+				@for(loot <- loots) {
+					@showLoot(loot)
+				}
+    		}
+		</div>
+		
+		@* Affichage des sorts *@
+		<div class="grid_5">
+			<h4>Sorts</h4>
+			@if(spells != null){
+				@for(spell <- spells) {
+					@showSpell(spell,perso)
+				}
+    		}
+		</div>
+		
+ 	</div>
+</body>
+
+
+	
+}

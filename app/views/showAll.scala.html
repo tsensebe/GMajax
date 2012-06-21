@@ -1,0 +1,51 @@
+@(persos: List[Perso], loots : List[Loot], spells : List[Spell])
+
+@if(persos != null){
+Persos :</br>
+	@for(perso <- persos) {
+		id        : @perso.id</br>
+		lvl       : @perso.lvl</br>
+		str       : @perso.str</br>
+		dex       : @perso.dex</br>
+		intel     : @perso.intel</br>
+		vita      : @perso.vita</br>
+		main_carac: @perso.main_carac</br>
+		classe    : @perso.classe</br>
+		</br>
+	}
+}
+</br>
+@if(loots != null){
+Loots :</br>
+	@for(loot <- loots) {
+		id : @loot.id</br>
+		description : @loot.description</br>
+		cat : @loot.cat</br>
+		str : @loot.str</br>
+		dex : @loot.dex</br>
+		intel : @loot.intel</br>
+		vita : @loot.vita</br>
+		bonusLife : @loot.bonusLife</br>
+		armor : @loot.armor</br>
+		dmgMin : @loot.dmgMin</br>
+		dmgMax : @loot.dmgMax</br>
+		attSpd : @loot.attSpd</br>
+		attSpdBonus : @loot.attSpdBonus</br>
+		resistBonus : @loot.resistBonus</br>
+		</br>
+	}
+}
+</br>
+@if(spells != null){
+Spells : </br>
+	@for(spell <- spells) {
+		id	             : @spell.id</br>
+		type	         : @spell.cat</br>
+		rune	         : @spell.rune</br>
+		description	     : @spell.description</br>
+		toolKitLink	     : @spell.toolKitLink</br>
+		dmgMultiplicator : @spell.dmgMultiplicator</br>
+		dotTime	         : @spell.dotTime</br>
+		</br>
+	}
+}

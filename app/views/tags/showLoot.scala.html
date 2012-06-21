@@ -1,0 +1,19 @@
+@(loot : Loot)
+
+<p class="lootName">@loot.description</p>
+<ul>
+	@if(loot.cat != null) {<li>Type objet : @loot.cat</li>}
+	@if(loot.armor != null) {<li>Armor : @loot.armor</li>}
+	@if(loot.dmgMin != null) {<li>Dmg : @loot.dmgMin - @loot.dmgMax</li>}
+	@if(loot.attSpd != null) {<li>Att spd : @loot.attSpd</li>}
+	@if(loot.str != null) {<li>Str : +@loot.str</li>}
+	@if(loot.dex != null) {<li>Dex : +@loot.dex</li>}
+	@if(loot.intel != null) {<li>Intel : +@loot.intel</li>}
+	@if(loot.vita != null) {<li>Vita : +@loot.vita</li>}
+	@if(loot.bonusLife != null) {<li>Life : +@loot.bonusLife.movePointRight(2) %</li>}
+	@if(loot.attSpdBonus != null) {<li>Att speed bonus : +@loot.attSpdBonus.movePointRight(2) %</li>}
+</ul>
+
+
+
+

@@ -1,0 +1,23 @@
+@(perso : Perso)
+
+@import _root_.theorycraft._
+@import _root_.models.utils.LootUtil
+
+<table class=attribTab>
+	<tr><td class=even>Lvl</td><td>@perso.lvl</td></tr>
+	<tr><td class=even>Classe</td><td>@perso.classe</td></tr>
+	<tr><td class=even>Str</td><td>@perso.eStr()</td></tr>
+	<tr><td class=even>Dex</td><td>@perso.eDex()</td></tr>
+	<tr><td class=even>Intel</td><td>@perso.eIntel()</td></tr>
+	<tr><td class=even>Vita</td><td>@perso.eVita()</td></tr>
+	<tr><td class=even>Hp</td><td>@Formula.hp(perso.lvl, perso.eVita(), LootUtil.lifeBonus(perso.loots))</td></tr>
+	<tr><td class=even>eHp lvl</td><td>TODO</td></tr>
+	<tr><td class=even>Dodge</td><td>@Formula.dodge(perso.eDex()).movePointRight(2) %</td></tr>
+	<tr><td class=even>Armor</td><td>@perso.armor()</td></tr>
+	<tr><td class=even>Armor reduction</td><td>@Formula.dmgReducArmor(perso.lvl,perso.armor()).movePointRight(2) %</td></tr>
+	<tr><td class=even>Armor reduction+3</td><td>@Formula.dmgReducArmor(perso.lvl+3,perso.armor()).movePointRight(2) %</td></tr>
+	<tr><td class=even>Resitance</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonus(perso.loots))</td></tr>
+	<tr><td class=even>Bonus dmg</td><td>@perso.bonusDmg().movePointRight(2) %</td></tr>
+	<tr><td class=even>Attaque speed</td><td>@LootUtil.attSpd(perso.loots)</td></tr>
+	<tr><td class=even>Dps</td><td>@Formula.dps(LootUtil.dmgMin(perso.loots),LootUtil.dmgMax(perso.loots),LootUtil.attSpd(perso.loots),perso.bonusDmg(),0)</td></tr>
+</table>
