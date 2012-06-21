@@ -1,7 +1,8 @@
+.*
+!.gitignore
 logs
 project/project
 project/target
 target
 tmp
 dist
-.setting
