@@ -140,7 +140,7 @@ public class Formula {
 		return CalcHelper.avgDmg(dmgMin, dmgMax).multiply(attSpd)
 				.multiply(weaponMod)
 				.multiply(bonusDmg)
-				.multiply(dmgCric.multiply(pCric).add(BigDecimal.valueOf(1)));
+				.multiply((dmgCric.multiply(pCric)).add(BigDecimal.valueOf(1)));
 	}
 	
 }

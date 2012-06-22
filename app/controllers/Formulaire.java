@@ -45,6 +45,8 @@ public class Formulaire extends Controller {
 		loot.dex = testformula.dex;
 		loot.intel = testformula.intel;
 		loot.vita = testformula.vita;
+		loot.dmgMin = testformula.dmgMin;
+		loot.dmgMax = testformula.dmgMax;
 		perso.loots = Arrays.asList(loot);
 		List<Spell> spells =Spell.all();
 		perso.spells = new HashSet<Spell>();

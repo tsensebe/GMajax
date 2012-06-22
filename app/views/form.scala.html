@@ -5,24 +5,28 @@
 
 @mainTemplate("GerardMajax") {
 
-	@helper.form(action = routes.Formulaire.submitForm, 'id -> "form") {
 
+	@helper.form(action = routes.Formulaire.submitForm, 'id -> "form") {
+	<div class="grid_3">
 	   <fieldset>
         	<legend>Perso</legend>      
             @inputText(testForm("lvl"),'_label -> "lvl")
         </fieldset>
-            
+    </div>    
+    <div class="grid_3">    
         <fieldset>
-        	<legend>Loot</legend>          
+        	<legend>Loot</legend> 
+        	@inputText(testForm("dmgMin"),'_label -> "dmg min")
+        	@inputText(testForm("dmgMax"),'_label -> "dmg max")             
             @inputText(testForm("str"),'_label -> "str")            
             @inputText(testForm("dex"),'_label -> "dex")            
             @inputText(testForm("intel"),'_label -> "intel")            
             @inputText(testForm("vita"),'_label -> "vita")            
         </fieldset>
-       
+      </div>    
         
-        <div class="actions">
-            <input type="submit" class="btn primary" value="Insert">
+        <div class="actions grid_3">
+            <input type="submit" class="btn primary" value="Shazaam !">
             <a href="@routes.Application.index" class="btn">Cancel</a>
         </div>
        }
