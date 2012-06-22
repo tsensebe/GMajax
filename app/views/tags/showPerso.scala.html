@@ -19,5 +19,5 @@
 	<tr><td class=even>Resitance</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonus(perso.loots))</td></tr>
 	<tr><td class=even>Bonus dmg</td><td>@perso.bonusDmg().movePointRight(2) %</td></tr>
 	<tr><td class=even>Attaque speed</td><td>@LootUtil.attSpd(perso.loots)</td></tr>
-	<tr><td class=even>Dps</td><td>@Formula.dps(LootUtil.dmgMin(perso.loots),LootUtil.dmgMax(perso.loots),LootUtil.attSpd(perso.loots),perso.bonusDmg(),0)</td></tr>
+	<tr><td class=even>Dps</td><td>@Formula.dps(LootUtil.dmgMin(perso.loots),LootUtil.dmgMax(perso.loots),LootUtil.attSpd(perso.loots),perso.bonusDmg(),0,perso.crit,perso.dmgCrit)</td></tr>
 </table>

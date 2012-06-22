@@ -75,15 +75,28 @@ public class Formula {
 	}
 
 	/**
+	 * Dmg reduction resistance = resist / (5 × lvlMonster + resist)
+	 * @param lvlMonster
+	 * @param resist
+	 * @return
+	 **/
+	public static BigDecimal  dmgReducResit(Integer lvlMonster, BigDecimal resist){
+		return resist.divide(
+				BigDecimal.valueOf(lvlMonster).multiply(BigDecimal.valueOf(5))
+				.add(resist), MathContext.DECIMAL32);
+	}
+	
+	
+	/**
 	 * 
 	 * EHP = HP / (1-DR) = HP / [(1 - DRa) × (1 - DRr) × (1 -DRo)]
-			DR : Damage Reduction totale
-			DR = 1 - [(1 - DRa) × (1 - DRr) × (1 -DRo)]
-			DRa : Damage Reduction from armor 
-			DRr : Damage Reduction from resistances
-			DRo : Damage Reduction from other sources
-			DRa = Armor / (Armor + (50 x mLvl))
-			DRr = Resistance / (Resistance + (5 x mLvl))
+	 *		DR : Damage Reduction totale
+	 *		DR = 1 - [(1 - DRa) × (1 - DRr) × (1 -DRo)]
+	 *		DRa : Damage Reduction from armor 
+	 *		DRr : Damage Reduction from resistances
+	 *		DRo : Damage Reduction from other sources
+	 *		DRa = Armor / (Armor + (50 x mLvl))
+	 *		DRr = Resistance / (Resistance + (5 x mLvl))
 	 * 
 	 * */
 	public static BigDecimal eHP(BigDecimal hp, BigDecimal dra, BigDecimal drr, BigDecimal dro){
@@ -98,11 +111,16 @@ public class Formula {
 	/**
 	 * Calcule le dps </br>
 	 * 
-	 * @param dmgMin dommage minimum
-	 * @param dmgMax dommage maximun
-	 * @param attSpd vitesse attaque
-	 * @param bonusDmg bonus de dommage de la carac principale
-	 * @param typeArme 1 main, 2 mains, dual
+	 * @param dmgMin
+	 *            dommage minimum
+	 * @param dmgMax
+	 *            dommage maximun
+	 * @param attSpd
+	 *            vitesse attaque
+	 * @param bonusDmg
+	 *            bonus de dommage de la carac principale
+	 * @param typeArme
+	 *            1 main, 2 mains, dual
 	 * 
 	 * @return dps = ((dmgMin+dmgMax)/2 )*attSpd*bonusDmg*weaponModifier
 	 * 
@@ -110,7 +128,8 @@ public class Formula {
 	 * 
 	 */
 	public static BigDecimal dps(Integer dmgMin, Integer dmgMax,
-			BigDecimal attSpd, BigDecimal bonusDmg, Integer typeArme) {
+			BigDecimal attSpd, BigDecimal bonusDmg, Integer typeArme,
+			BigDecimal pCric, BigDecimal dmgCric) {
 
 		BigDecimal weaponMod = ONE_H_WEAPON_MOD;
 		if (Constants.TWO_H_WEAPON.equals(typeArme))
@@ -118,10 +137,10 @@ public class Formula {
 		if (Constants.DUAL_WEAPON.equals(typeArme))
 			weaponMod = DUAL_WEAPON_MOD;
 
-		return CalcHelper.avgDmg(dmgMin,dmgMax)
-				.multiply(attSpd)
+		return CalcHelper.avgDmg(dmgMin, dmgMax).multiply(attSpd)
 				.multiply(weaponMod)
-				.multiply(bonusDmg);
+				.multiply(bonusDmg)
+				.multiply(dmgCric.multiply(pCric).add(BigDecimal.valueOf(1)));
 	}
 	
 }

@@ -1,6 +1,14 @@
 package controllers;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
+import models.Loot;
 import models.Perso;
+import models.Spell;
+import models.TestFormula;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -9,16 +17,38 @@ import views.html.form;
 
 public class Formulaire extends Controller {
 	  
-	final static Form<Perso> persoForm = form(Perso.class);
+	final static Form<TestFormula> testform = form(TestFormula.class);
 	
 	public static Result initForm(){
-		Perso perso = new Perso(Perso.SORCIER,60);
-		return ok(form.render(persoForm.fill(perso)));
+		TestFormula testformula = new TestFormula();
+		testformula.lvl=60;
+		testformula.str=0;
+		testformula.dex=0;
+		testformula.intel=0;
+		testformula.vita=0;
+		testformula.bonusLife=BigDecimal.valueOf(0);
+		testformula.armor=0;
+		testformula.dmgMin=0;
+		testformula.dmgMax=0;
+		testformula.attSpd=BigDecimal.valueOf(1);
+		testformula.attSpdBonus=BigDecimal.valueOf(0);
+		testformula.resistBonus=0;
+		return ok(form.render(testform.fill(testformula)));
 	}
 	
 	public static Result submitForm(){
-		Perso perso = persoForm.bindFromRequest().get();
-		perso.initCarac();
+		TestFormula testformula = testform.bindFromRequest().get();
+		Perso perso = new Perso(Perso.SORCIER,testformula.lvl);
+		Loot loot = new Loot();
+		loot.armor = testformula.armor;
+		loot.str = testformula.str;
+		loot.dex = testformula.dex;
+		loot.intel = testformula.intel;
+		loot.vita = testformula.vita;
+		perso.loots = Arrays.asList(loot);
+		List<Spell> spells =Spell.all();
+		perso.spells = new HashSet<Spell>();
+		for(Spell spell:spells) perso.spells.add(spell);
 		return ok(affichage.render(perso,perso.loots,perso.spells));
 	}
 	

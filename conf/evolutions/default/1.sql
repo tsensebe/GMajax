@@ -31,6 +31,8 @@ create table perso (
   main_carac                integer,
   classe                    varchar(255),
   resist_bonus              decimal(38),
+  crit                      decimal(38),
+  dmg_crit                  decimal(38),
   constraint pk_perso primary key (id))
 ;
 

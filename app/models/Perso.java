@@ -37,6 +37,8 @@ public class Perso extends Model{
 	public Integer main_carac;
 	public String classe;
 	public BigDecimal resistBonus;
+	public BigDecimal crit = BigDecimal.valueOf(0.05);
+	public BigDecimal dmgCrit = BigDecimal.valueOf(0.5);
 	
 	public Set<Spell> spells;
 	public List<Loot> loots;
