@@ -145,9 +145,5 @@ public class Perso extends Model{
 	public static void delete(Long id) {
 		find.ref(id).delete();
 	}
-//	
-//	public static List<String> listClass() {
-//		return Arrays.asList(BARBARE,CHASSEUR,FETICHEUR,MOINE,SORCIER);
-//    }
 	
 }

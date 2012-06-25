@@ -66,11 +66,19 @@ public class LootUtil {
 	 * % bonus de vie par le loot 
 	 */
 	public static BigDecimal lifeBonus(List<Loot> loots){
-		if(loots == null) return BigDecimal.valueOf(0);
-		BigDecimal bonus = BigDecimal.valueOf(0);
+		if(loots == null) return BigDecimal.ZERO;
+		BigDecimal bonus = BigDecimal.ZERO;
 		for(Loot loot: loots){
 			if(loot.bonusLife != null) bonus = bonus.add(loot.bonusLife);
 		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusAll(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots)
+			if(loot.resistAll != null) bonus += loot.resistAll;	
 		return bonus;
 	}
 	
@@ -156,9 +164,9 @@ public class LootUtil {
 	 * attSpd de l'arme * (1 + attSpdBonus)
 	 */
 	public static BigDecimal attSpd(List<Loot> loots){
-		if(loots == null) return BigDecimal.valueOf(0);
-		BigDecimal attSpd = BigDecimal.valueOf(1);
-		BigDecimal attSpdBonus = BigDecimal.valueOf(1);
+		if(loots == null) return BigDecimal.ZERO;
+		BigDecimal attSpd = BigDecimal.ONE;
+		BigDecimal attSpdBonus = BigDecimal.ONE;
 		for(Loot loot: loots){
 			if(loot.attSpd != null) attSpd = loot.attSpd;
 			if(loot.attSpdBonus != null) attSpdBonus = attSpdBonus.add(loot.attSpdBonus);

@@ -8,9 +8,7 @@ import theorycraft.utils.Constants;
 
 public class Formula {
 
-
-	
-	private static final BigDecimal ONE_H_WEAPON_MOD = BigDecimal.valueOf(1);
+	private static final BigDecimal ONE_H_WEAPON_MOD = BigDecimal.ONE;
 	private static final BigDecimal TWO_H_WEAPON_MOD = BigDecimal.valueOf(1.2);
 	private static final BigDecimal DUAL_WEAPON_MOD = BigDecimal.valueOf(1.15);
 	
@@ -25,7 +23,7 @@ public class Formula {
 	 * @param dex la dextérité du perso
 	 */
 	public static BigDecimal dodge(Integer dex){
-		if(dex == null) return BigDecimal.valueOf(0);
+		if(dex == null) return BigDecimal.ZERO;
 		if(dex <= 100)
 			return BigDecimal.valueOf(dex).divide(BigDecimal.valueOf(1000));
 		if(dex <= 500)
@@ -53,7 +51,7 @@ public class Formula {
 			baseHp = 36 + lvl*4 + vita*10;
 		else
 			baseHp = 36 + lvl*4 + vita*(lvl-25);
-		return BigDecimal.valueOf(baseHp).multiply(BigDecimal.valueOf(1).add(bonusLife));
+		return BigDecimal.valueOf(baseHp).multiply(BigDecimal.ONE.add(bonusLife));
 	}
 	
 	/**
@@ -99,9 +97,9 @@ public class Formula {
 	 * 
 	 * */
 	public static BigDecimal eHp(BigDecimal hp, BigDecimal dra, BigDecimal drr, BigDecimal dro){
-		BigDecimal calcInter= (BigDecimal.valueOf(1).subtract(dra))
-								.multiply(BigDecimal.valueOf(1).subtract(drr))
-								.multiply(BigDecimal.valueOf(1).subtract(dro));
+		BigDecimal calcInter= (BigDecimal.ONE.subtract(dra))
+								.multiply(BigDecimal.ONE.subtract(drr))
+								.multiply(BigDecimal.ONE.subtract(dro));
 		return hp.divide(calcInter, MathContext.DECIMAL32);
 	}
 	
@@ -139,7 +137,7 @@ public class Formula {
 		return CalcHelper.avgDmg(dmgMin, dmgMax).multiply(attSpd)
 				.multiply(weaponMod)
 				.multiply(bonusDmg)
-				.multiply((dmgCric.multiply(pCric)).add(BigDecimal.valueOf(1)));
+				.multiply((dmgCric.multiply(pCric)).add(BigDecimal.ONE));
 	}
 	
 }

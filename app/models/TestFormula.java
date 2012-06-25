@@ -16,6 +16,12 @@ public class TestFormula {
 	public Integer dmgMax;
 	public BigDecimal attSpd;
 	public BigDecimal attSpdBonus;
-	public Integer resistBonus;
+	public Integer resistAll;
+	public Integer resistPhys;
+	public Integer resistArcane;
+	public Integer resistCold;
+	public Integer resistFire;
+	public Integer resistLightning;
+	public Integer resistPoison;
 	
 }
