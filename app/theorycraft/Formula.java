@@ -90,8 +90,7 @@ public class Formula {
 	/**
 	 * 
 	 * EHP = HP / (1-DR) = HP / [(1 - DRa) × (1 - DRr) × (1 -DRo)]
-	 *		DR : Damage Reduction totale
-	 *		DR = 1 - [(1 - DRa) × (1 - DRr) × (1 -DRo)]
+	 *		DR : Damage Reduction totale = 1 - [(1 - DRa) × (1 - DRr) × (1 -DRo)]
 	 *		DRa : Damage Reduction from armor 
 	 *		DRr : Damage Reduction from resistances
 	 *		DRo : Damage Reduction from other sources
@@ -99,7 +98,7 @@ public class Formula {
 	 *		DRr = Resistance / (Resistance + (5 x mLvl))
 	 * 
 	 * */
-	public static BigDecimal eHP(BigDecimal hp, BigDecimal dra, BigDecimal drr, BigDecimal dro){
+	public static BigDecimal eHp(BigDecimal hp, BigDecimal dra, BigDecimal drr, BigDecimal dro){
 		BigDecimal calcInter= (BigDecimal.valueOf(1).subtract(dra))
 								.multiply(BigDecimal.valueOf(1).subtract(drr))
 								.multiply(BigDecimal.valueOf(1).subtract(dro));

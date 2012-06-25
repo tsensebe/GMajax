@@ -6,12 +6,19 @@
 	@if(loot.armor != null) {<li>Armor : @loot.armor</li>}
 	@if(loot.dmgMin != null) {<li>Dmg : @loot.dmgMin - @loot.dmgMax</li>}
 	@if(loot.attSpd != null) {<li>Att spd : @loot.attSpd</li>}
+	@if(loot.attSpdBonus != null) {<li>Att speed bonus : +@loot.attSpdBonus.movePointRight(2) %</li>}
 	@if(loot.str != null) {<li>Str : +@loot.str</li>}
 	@if(loot.dex != null) {<li>Dex : +@loot.dex</li>}
 	@if(loot.intel != null) {<li>Intel : +@loot.intel</li>}
 	@if(loot.vita != null) {<li>Vita : +@loot.vita</li>}
 	@if(loot.bonusLife != null) {<li>Life : +@loot.bonusLife.movePointRight(2) %</li>}
-	@if(loot.attSpdBonus != null) {<li>Att speed bonus : +@loot.attSpdBonus.movePointRight(2) %</li>}
+	@if(loot.resistPhys != null) {<li>Resist phys : @loot.resistPhys</li>}
+	@if(loot.resistAll != null) {<li>Resist all : @loot.resistAll</li>}
+	@if(loot.resistArcane != null) {<li>Resist arcane : @loot.resistArcane</li>}
+	@if(loot.resistCold != null) {<li>Resist cold : @loot.resistCold</li>}
+	@if(loot.resistFire != null) {<li>Resist fire : @loot.resistFire</li>}
+	@if(loot.resistLightning != null) {<li>Resist lightning : @loot.resistLightning</li>}
+	@if(loot.resistPoison != null) {<li>Resist poison : @loot.resistPoison</li>}
 </ul>
 
 

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class TestFormula {
 
 	public Integer lvl;
+	public String classe;
 	public Integer str;
 	public Integer dex;
 	public Integer intel;

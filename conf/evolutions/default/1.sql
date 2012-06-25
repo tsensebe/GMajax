@@ -17,7 +17,13 @@ create table loot (
   dmg_max                   integer,
   att_spd                   decimal(38),
   att_spd_bonus             decimal(38),
-  resist_bonus              integer,
+  resist_phys               integer,
+  resist_all                integer,
+  resist_arcane             integer,
+  resist_cold               integer,
+  resist_fire               integer,
+  resist_lightning          integer,
+  resist_poison             integer,
   constraint pk_loot primary key (id))
 ;
 

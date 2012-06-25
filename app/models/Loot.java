@@ -41,7 +41,16 @@ public class Loot extends Model{
 	public Integer dmgMax;
 	public BigDecimal attSpd;
 	public BigDecimal attSpdBonus;
-	public Integer resistBonus;
+	public Integer resistPhys;
+	public Integer resistAll;
+	public Integer resistArcane;
+	public Integer resistCold;
+	public Integer resistFire;
+	public Integer resistLightning;
+	public Integer resistPoison;
+
+	
+	
 	
 	public static Finder<Long,Loot> find = new Finder(Long.class, Loot.class);
 	

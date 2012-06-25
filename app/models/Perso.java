@@ -1,6 +1,8 @@
 package models;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 
 import models.utils.LootUtil;
 import play.db.ebean.Model;
+import scala.reflect.generic.Trees.This;
 
 @Entity
 public class Perso extends Model{
@@ -24,11 +27,12 @@ public class Perso extends Model{
 	public static final String FETICHEUR = "feticheur";
 	public static final String CHASSEUR = "chasseur";
 	
-	@Id
-	public Long id;
+	public static final List<String> classes = Arrays.asList(BARBARE,CHASSEUR,FETICHEUR,MOINE,SORCIER);
 	
 	public static Finder<Long,Perso> find = new Finder(Long.class, Perso.class);
-	
+
+	@Id
+	public Long id;
 	public Integer lvl;
 	public Integer str;
 	public Integer dex;
@@ -36,17 +40,11 @@ public class Perso extends Model{
 	public Integer vita;
 	public Integer main_carac;
 	public String classe;
-	public BigDecimal resistBonus;
+	public BigDecimal resistBonus = new BigDecimal(0);
 	public BigDecimal crit = BigDecimal.valueOf(0.05);
 	public BigDecimal dmgCrit = BigDecimal.valueOf(0.5);
-	
 	public Set<Spell> spells;
 	public List<Loot> loots;
-	
-	
-	public Perso(){
-		super();
-	}
 	
 	public Perso(String classe,Integer lvl){
 		this.classe = classe;
@@ -63,15 +61,12 @@ public class Perso extends Model{
 		}
 		if(CHASSEUR.equals(classe)){
 			this.main_carac = MAIN_CARAC_DEX;
-			this.resistBonus = new BigDecimal(0);
 		}
 		if(SORCIER.equals(classe)){
-			this.main_carac = MAIN_CARAC_INTEL;
-			this.resistBonus = new BigDecimal(0);		
+			this.main_carac = MAIN_CARAC_INTEL;	
 		}
 		if(FETICHEUR.equals(classe)){
 			this.main_carac = MAIN_CARAC_INTEL;
-			this.resistBonus = new BigDecimal(0);
 		}
 		initCarac();
 	}
@@ -150,5 +145,9 @@ public class Perso extends Model{
 	public static void delete(Long id) {
 		find.ref(id).delete();
 	}
+//	
+//	public static List<String> listClass() {
+//		return Arrays.asList(BARBARE,CHASSEUR,FETICHEUR,MOINE,SORCIER);
+//    }
 	
 }

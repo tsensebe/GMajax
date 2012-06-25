@@ -74,11 +74,63 @@ public class LootUtil {
 		return bonus;
 	}
 	
-	public static Integer resistBonus(List<Loot> loots){
+	public static Integer resistBonusPhys(List<Loot> loots){
 		if(loots == null) return 0;
 		Integer bonus = 0;
-		for(Loot loot: loots)
-			if(loot.resistBonus != null) bonus += loot.resistBonus;
+		for(Loot loot: loots){
+			if(loot.resistPhys != null) bonus += loot.resistPhys;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusArcane(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots){
+			if(loot.resistArcane != null) bonus += loot.resistArcane;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusCold(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots){
+			if(loot.resistCold != null) bonus += loot.resistCold;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusFire(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots){
+			if(loot.resistFire != null) bonus += loot.resistFire;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusLightning(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots){
+			if(loot.resistLightning != null) bonus += loot.resistLightning;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
+		return bonus;
+	}
+	
+	public static Integer resistBonusPoison(List<Loot> loots){
+		if(loots == null) return 0;
+		Integer bonus = 0;
+		for(Loot loot: loots){
+			if(loot.resistPoison != null) bonus += loot.resistPoison;
+			if(loot.resistAll != null) bonus += loot.resistAll;	
+		}
 		return bonus;
 	}
 

@@ -6,22 +6,31 @@
 @mainTemplate("GerardMajax") {
 
 
-	@helper.form(action = routes.Formulaire.submitForm, 'id -> "form") {
+	@helper.form(action = routes.Formulaire.submitForm) {
 	<div class="grid_3">
 	   <fieldset>
         	<legend>Perso</legend>      
             @inputText(testForm("lvl"),'_label -> "lvl")
+            @select(testForm("classe"), 
+                	options = options(Perso.classes),
+                	'_default -> "--- Classe ---",
+                	'_label -> "Classe")
         </fieldset>
     </div>    
     <div class="grid_3">    
         <fieldset>
         	<legend>Loot</legend> 
         	@inputText(testForm("dmgMin"),'_label -> "dmg min")
-        	@inputText(testForm("dmgMax"),'_label -> "dmg max")             
+        	@inputText(testForm("dmgMax"),'_label -> "dmg max")          
             @inputText(testForm("str"),'_label -> "str")            
             @inputText(testForm("dex"),'_label -> "dex")            
             @inputText(testForm("intel"),'_label -> "intel")            
-            @inputText(testForm("vita"),'_label -> "vita")            
+            @inputText(testForm("vita"),'_label -> "vita")    
+            @inputText(testForm("bonusLife"),'_label -> "bonusLife")
+            @inputText(testForm("armor"),'_label -> "armor")
+            @inputText(testForm("attSpd"),'_label -> "attSpd")
+            @inputText(testForm("attSpdBonus"),'_label -> "attSpdBonus")
+            @inputText(testForm("resistBonus  "),'_label -> "resistBonus")     
         </fieldset>
       </div>    
         
