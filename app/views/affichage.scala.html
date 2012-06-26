@@ -1,16 +1,13 @@
 @(perso: Perso, loots : List[Loot], spells : Set[Spell]) 
 
 @import tags._
-@import helper._
-@import helper.twitterBootstrap._
 
 @mainTemplate("GerardMajax"){
 
-
+	</br>
 	<div class="row-fluid show-grid">
 		<div class="span12">
 			<h2>@perso.nom <span>@perso.classe</span> lvl @perso.lvl
-			<a href="@routes.Application.init" class="btn btn-primary btn-mini">New</a>
 			<a href="@routes.Application.fork(perso.id)" class="btn btn-warning btn-mini" >Fork</a>
 			<a href="@routes.Application.delete(perso.id)" class="btn btn-danger btn-mini" >Delete</a>
 		</h2></div>

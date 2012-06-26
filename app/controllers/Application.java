@@ -42,8 +42,11 @@ public class Application extends Controller {
 		return ok(form.render(persoForm.fill(perso)));
 	}
 	
-	public static Result submitForm(){
-		Perso perso = persoForm.bindFromRequest().get();
+	public static Result submitForm(){	
+		Form<Perso> filledForm = persoForm.bindFromRequest();
+		if(filledForm.hasErrors()) 
+			return badRequest(form.render(filledForm));          
+        Perso perso = filledForm.get();
 		perso.initCarac();
 		perso.save();
 		perso.loots.get(0).perso=perso;

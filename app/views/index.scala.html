@@ -1,20 +1,16 @@
 @(persos: List[Perso])
 
 @mainTemplate("GerardMajax"){
-	
-	<div class="row-fluid show-grid">
-		<div class="span12">
-			<a href="@routes.Application.init" class="btn btn-primary">New</a>
-		</div>
-	</div>
-	
-	</br>
-	
+		</br>
 	<div class="row-fluid show-grid">	
 		<div class="span12">
 			@if(persos != null){ 
 				@for(perso <- persos) { 
-					<a href="@routes.Application.show(perso.id)" ><h3>@perso.nom <span>@perso.classe</span> lvl @perso.lvl</h3></a>
+					<h3>@perso.nom <span>@perso.classe</span> lvl @perso.lvl
+						<a href="@routes.Application.show(perso.id)" class="btn btn-success btn-mini"  >View</a>
+						<a href="@routes.Application.fork(perso.id)" class="btn btn-warning btn-mini" >Fork</a>
+						<a href="@routes.Application.delete(perso.id)" class="btn btn-danger btn-mini" >Delete</a>
+					</h3>
 				}	
 			}
 		</div>

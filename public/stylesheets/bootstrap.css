@@ -165,12 +165,13 @@ body {
 }
 
 a {
-  color:black;
+  color: #0088cc;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+  color: #005580;
+  text-decoration: underline;
 }
 
 .row {

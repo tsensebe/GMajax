@@ -3,15 +3,14 @@ package models;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import models.utils.LootUtil;
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 
 @Entity
@@ -29,18 +28,20 @@ public class Perso extends Model{
 	
 	public static final List<String> classes = Arrays.asList(BARBARE,CHASSEUR,FETICHEUR,MOINE,SORCIER);
 	
-	public static Finder<Long,Perso> find = new Finder(Long.class, Perso.class);
-
 	@Id
 	public Long id;
+	@Required
+	public String classe;
+	@Required
 	public String nom;
+	@Required
 	public Integer lvl;
+	
 	public Integer str;
 	public Integer dex;
 	public Integer intel;
 	public Integer vita;
 	public Integer main_carac;
-	public String classe;
 	public BigDecimal resistBonus;
 
 	@OneToMany
@@ -152,16 +153,9 @@ public class Perso extends Model{
 		return BigDecimal.valueOf(0.5);
 	}
 	
-	public static List<Perso> all() {
-		return find.all();
-	}
-
-	public static void create(Perso perso) {
-		perso.save();
-	}
-
-	public static void delete(Long id) {
-		find.ref(id).delete();
-	}
+	public static Finder<Long,Perso> find = new Finder(Long.class, Perso.class);
+	public static List<Perso> all() {return find.all();}
+	public static void create(Perso perso) {perso.save();}
+	public static void delete(Long id) {find.ref(id).delete();}
 	
 }

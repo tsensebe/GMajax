@@ -1,34 +1,38 @@
 @(persoForm: Form[Perso])
 
 @import helper._
-@import helper.twitterBootstrap._
+@import tags._
 
 
 @lootform(loot: Field, className: String = "loot") = {
-	@inputText(loot("description"),'_label -> "description")
-    @inputText(loot("dmgMin"),'_label -> "dmg min")
-    @inputText(loot("dmgMax"),'_label -> "dmg max")          
-    @inputText(loot("str"),'_label -> "str")            
-    @inputText(loot("dex"),'_label -> "dex")            
-    @inputText(loot("intel"),'_label -> "intel")            
-    @inputText(loot("vita"),'_label -> "vita")    
-    @inputText(loot("bonusLife"),'_label -> "bonusLife")
-    @inputText(loot("armor"),'_label -> "armor")
-    @inputText(loot("attSpd"),'_label -> "attSpd")
-    @inputText(loot("attSpdBonus"),'_label -> "attSpdBonus")
+	@inputText(loot("description"),'_label -> "Description")
+    @inputText(loot("dmgMin"),'_label -> "Dmg min")
+    @inputText(loot("dmgMax"),'_label -> "Dmg max")          
+    @inputText(loot("str"),'_label -> "Str")            
+    @inputText(loot("dex"),'_label -> "Dex")            
+    @inputText(loot("intel"),'_label -> "Intel")            
+    @inputText(loot("vita"),'_label -> "Vita")    
+    @inputText(loot("bonusLife"),'_label -> "+%Vie ")
+    @inputText(loot("armor"),'_label -> "Armor")
+    @inputText(loot("attSpd"),'_label -> "AttSpd")
+    @inputText(loot("resistAll"),'_label -> "Resist All") 
+    @inputText(loot("resistPhys"),'_label -> "Phys resist")
+    @inputText(loot("resistArcane"),'_label -> "Arcane resist")
+    @inputText(loot("resistCold"),'_label -> "Cold resist")
+    @inputText(loot("resistFire"),'_label -> "Fire resist")
+    @inputText(loot("resistLightning"),'_label -> "Ligthning resist")
+    @inputText(loot("resistPoison"),'_label -> "Poison resist")
 }
-
-
 
 @mainTemplate("GerardMajax") {
 
-
-	@helper.form(action = routes.Application.submitForm) {
+<div class="row-fluid show-grid">
+	@helper.form(action = routes.Application.submitForm, 'class -> "form-horizontal") {
 	   <div class="span6">
 	   <fieldset>
         	<legend>Perso</legend>  
         	@inputText(persoForm("nom"),'_label -> "Nom")    
-            @inputText(persoForm("lvl"),'_label -> "lvl")
+            @inputText(persoForm("lvl"),'_label -> "Lvl")
             @select(persoForm("classe"), 
                 	options = options(Perso.classes),
                 	'_default -> "--- Classe ---",
@@ -49,4 +53,5 @@
  
  
     }
+</div>
 }

@@ -30,6 +30,7 @@ create table loot (
 
 create table perso (
   id                        bigint not null,
+  classe                    varchar(255),
   nom                       varchar(255),
   lvl                       integer,
   str                       integer,
@@ -37,7 +38,6 @@ create table perso (
   intel                     integer,
   vita                      integer,
   main_carac                integer,
-  classe                    varchar(255),
   resist_bonus              decimal(38),
   constraint pk_perso primary key (id))
 ;

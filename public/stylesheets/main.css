@@ -1,11 +1,9 @@
 body{background-image: url(/assets/images/background.jpg);}
 header {background-color: black;}
 header h1 {color: white; padding: 0.2em 0.7em;}
+header h1 a:{text-decoration: none;}
 span{color: #DD00E7;}
-a:hover{
-	text-decoration: none;
-	color : black;
-}
+
 
 section#main {position: relative;
     padding: 5em 2em;}
