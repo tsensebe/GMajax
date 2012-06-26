@@ -5,27 +5,21 @@
 	<head>
 		<title>@title Simulator</title>
 		<link rel="stylesheet" href="/assets/stylesheets/main.css" />
-		<noscript>
-			<link rel="stylesheet" href="/assets/stylesheets/mobile.min.css" />
-		</noscript>
-		<script>
-			var ADAPT_CONFIG = {
-			  path: '/assets/stylesheets/',dynamic: true,
-			  range: ['0px    to 760px  = mobile.min.css',
-			    '760px  to 980px  = 720.min.css',
-			    '980px  to 1280px = 960.min.css',
-			    '1280px to 1600px = 1200.min.css',
-			    '1600px to 1940px = 1560.min.css',
-			    '1940px to 2540px = 1920.min.css',
-			    '2540px           = 2520.min.css']};
-		</script>
-		<script src="/assets/javascripts/adapt.min.js"></script>
-		<script src="http://eu.battle.net/d3/static/js/tooltips.js"></script>
+		<link rel="stylesheet" media="screen" href="/assets/stylesheets/bootstrap.css" />
+		<link rel="stylesheet" media="screen" href="/assets/stylesheets/bootstrap-responsive.css" />
 	</head>
 	<body>
-	<header>
-    	<h1>@title<span>Simulator</span></h1>
-	</header>
-	@content
+	
+		<header class="navbar-fixed-top">
+	    	<a href="@routes.Application.index" ><h1 class="fill">@title<span>Simulator</span></h1></a>
+		</header>
+		
+		<section id="main">
+			@content
+		</section>
+	
+	<script src="http://eu.battle.net/d3/static/js/tooltips.js"></script>
+	<script src="/assets/javascripts/bootstrap.js"></script>
+	</body>
 </html>
 

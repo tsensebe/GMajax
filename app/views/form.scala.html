@@ -1,42 +1,52 @@
-@(testForm: Form[TestFormula])
+@(persoForm: Form[Perso])
 
 @import helper._
 @import helper.twitterBootstrap._
 
+
+@lootform(loot: Field, className: String = "loot") = {
+	@inputText(loot("description"),'_label -> "description")
+    @inputText(loot("dmgMin"),'_label -> "dmg min")
+    @inputText(loot("dmgMax"),'_label -> "dmg max")          
+    @inputText(loot("str"),'_label -> "str")            
+    @inputText(loot("dex"),'_label -> "dex")            
+    @inputText(loot("intel"),'_label -> "intel")            
+    @inputText(loot("vita"),'_label -> "vita")    
+    @inputText(loot("bonusLife"),'_label -> "bonusLife")
+    @inputText(loot("armor"),'_label -> "armor")
+    @inputText(loot("attSpd"),'_label -> "attSpd")
+    @inputText(loot("attSpdBonus"),'_label -> "attSpdBonus")
+}
+
+
+
 @mainTemplate("GerardMajax") {
 
 
-	@helper.form(action = routes.Formulaire.submitForm) {
-	<div class="grid_3">
+	@helper.form(action = routes.Application.submitForm) {
+	   <div class="span6">
 	   <fieldset>
-        	<legend>Perso</legend>      
-            @inputText(testForm("lvl"),'_label -> "lvl")
-            @select(testForm("classe"), 
+        	<legend>Perso</legend>  
+        	@inputText(persoForm("nom"),'_label -> "Nom")    
+            @inputText(persoForm("lvl"),'_label -> "lvl")
+            @select(persoForm("classe"), 
                 	options = options(Perso.classes),
                 	'_default -> "--- Classe ---",
                 	'_label -> "Classe")
         </fieldset>
-    </div>    
-    <div class="grid_3">    
-        <fieldset>
-        	<legend>Loot</legend> 
-        	@inputText(testForm("dmgMin"),'_label -> "dmg min")
-        	@inputText(testForm("dmgMax"),'_label -> "dmg max")          
-            @inputText(testForm("str"),'_label -> "str")            
-            @inputText(testForm("dex"),'_label -> "dex")            
-            @inputText(testForm("intel"),'_label -> "intel")            
-            @inputText(testForm("vita"),'_label -> "vita")    
-            @inputText(testForm("bonusLife"),'_label -> "bonusLife")
-            @inputText(testForm("armor"),'_label -> "armor")
-            @inputText(testForm("attSpd"),'_label -> "attSpd")
-            @inputText(testForm("attSpdBonus"),'_label -> "attSpdBonus")
-            @inputText(testForm("resistBonus  "),'_label -> "resistBonus")     
-        </fieldset>
-      </div>    
+        <input type="submit" class="btn primary" value="Shazaam !">
+       </div>
         
-        <div class="actions grid_3">
-            <input type="submit" class="btn primary" value="Shazaam !">
-            <a href="@routes.Application.index" class="btn">Cancel</a>
-        </div>
-       }
+       <div class="span6">
+        	<fieldset>
+        	<legend>Loot</legend>
+        	@repeat(persoForm("loots")) { loot => 
+        		@lootform(loot)
+            }
+		 	</fieldset>
+     	 </div>
+     	 
+ 
+ 
+    }
 }

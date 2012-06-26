@@ -5,9 +5,9 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import play.db.ebean.Model;
-import play.db.ebean.Model.Finder;
 
 @Entity
 public class Loot extends Model{
@@ -49,8 +49,13 @@ public class Loot extends Model{
 	public Integer resistLightning;
 	public Integer resistPoison;
 
+    @ManyToOne
+    public Perso perso;
 	
-	
+	public Loot(String description){
+		super();
+		this.description = description;
+	}
 	
 	public static Finder<Long,Loot> find = new Finder(Long.class, Loot.class);
 	

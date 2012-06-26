@@ -1,53 +1,29 @@
-@import 'reset.css';
-@import 'text.css';
-
-body{
-	background-image: url(/assets/images/background.jpg);
-}
-
-h1 {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 90px 10px 15px;
-  text-shadow: #fff 0 1px 0;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1;
-}
-
-a {
+body{background-image: url(/assets/images/background.jpg);}
+header {background-color: black;}
+header h1 {color: white; padding: 0.2em 0.7em;}
+span{color: #DD00E7;}
+a:hover{
 	text-decoration: none;
 	color : black;
 }
 
-span{
-	color: #DD00E7
-}
+section#main {position: relative;
+    padding: 5em 2em;}
 
-
-
-.attribTab{
+#showPerso{
 	font-family: Inconsolata;
-	background-color: whiteSmoke;
-	border: 1px solid rgba(0, 0, 0, 0.15);
-	width: 100%
 }
 
-.attribTab td.even{
+#showPerso dt{
 	color: #C17F31;
+	text-align: left;
 }
 
 .lootName {
-	color:orange;
-	font-weight: bold;
-}
+	color:blue;
+	font-weight: bold;}
 
 .spellName {
 	color:purple;
-	font-weight: bold;
-}
+	font-weight: bold;}
 

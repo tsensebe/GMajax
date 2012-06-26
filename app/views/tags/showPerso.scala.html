@@ -3,36 +3,35 @@
 @import _root_.theorycraft._
 @import _root_.models.utils.LootUtil
 
-<table class=attribTab>
-	<tr><td class=even>Lvl</td><td>@perso.lvl</td></tr>
-	<tr><td class=even>Classe</td><td>@perso.classe</td></tr>
-	<tr><td class=even>Str</td><td>@perso.eStr()</td></tr>
-	<tr><td class=even>Dex</td><td>@perso.eDex()</td></tr>
-	<tr><td class=even>Intel</td><td>@perso.eIntel()</td></tr>
-	<tr><td class=even>Vita</td><td>@perso.eVita()</td></tr>
-	<tr><td class=even>Hp</td><td>@Formula.hp(perso.lvl, perso.eVita(), LootUtil.lifeBonus(perso.loots))</td></tr>
-	<tr><td class=even>Dodge</td><td>@Formula.dodge(perso.eDex()).movePointRight(2)%</td></tr>
-	<tr><td class=even>Armor</td><td>@perso.armor() (@Formula.dmgReducArmor(perso.lvl,perso.armor()).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist phys</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusPhys(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusPhys(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist arcane</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusArcane(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusArcane(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist cold</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusCold(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusCold(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist fire</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusFire(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusFire(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist lightning</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusLightning(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusLightning(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>Resist poison</td><td>@Formula.resist(perso.eIntel(),LootUtil.resistBonusPoison(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusPoison(perso.loots))).movePointRight(2)%)</td></tr>
-	<tr><td class=even>eHp (phys)</td>
-		<td>@Formula.eHp(Formula.hp(perso.lvl, perso.eVita(), LootUtil.lifeBonus(perso.loots)),
+<dl id="showPerso" class="dl-horizontal">
+	<dt>Str</dt><dd>@perso.eStr()</dd>
+	<dt>Dex</dt><dd>@perso.eDex()</dd>
+	<dt>Intel</dt><dd>@perso.eIntel()</dd>
+	<dt>Vita</dt><dd>@perso.eVita()</dd>
+	<dt>Hp</dt><dd>@Formula.hp(perso.lvl, perso.eVita(), LootUtil.lifeBonus(perso.loots))</dd>
+	<dt>Dodge</dt><dd>@Formula.dodge(perso.eDex()).movePointRight(2)%</dd>
+	<dt>Armor</dt><dd>@perso.armor() (@Formula.dmgReducArmor(perso.lvl,perso.armor()).movePointRight(2)%)</dd>
+	<dt>Resist phys</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusPhys(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusPhys(perso.loots))).movePointRight(2)%)</dd>
+	<dt>Resist arcane</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusArcane(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusArcane(perso.loots))).movePointRight(2)%)</dd>
+	<dt>Resist cold</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusCold(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusCold(perso.loots))).movePointRight(2)%)</dd>
+	<dt>Resist fire</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusFire(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusFire(perso.loots))).movePointRight(2)%)</dd>
+	<dt>Resist lightning</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusLightning(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusLightning(perso.loots))).movePointRight(2)%)</dd>
+	<dt>Resist poison</dt><dd>@Formula.resist(perso.eIntel(),LootUtil.resistBonusPoison(perso.loots)) (@Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusPoison(perso.loots))).movePointRight(2)%)</dd>
+	<dt>eHp (phys)</dt>
+		<dd>@Formula.eHp(Formula.hp(perso.lvl, perso.eVita(), LootUtil.lifeBonus(perso.loots)),
 						 Formula.dmgReducArmor(perso.lvl,perso.armor()),
 						 Formula.dmgReducResit(perso.lvl,Formula.resist(perso.eIntel(),LootUtil.resistBonusPhys(perso.loots))),
-						 perso.resistBonus)</td></tr>
-	<tr><td class=even>Bonus dmg</td><td>@perso.bonusDmg().movePointRight(2) %</td></tr>
-	<tr><td class=even>Chance Crit</td><td>@perso.crit.movePointRight(2)%</td></tr>
-	<tr><td class=even>Dmg crit</td><td>+ @perso.dmgCrit.movePointRight(2)%</td></tr>
-	<tr><td class=even>Attaque speed</td><td>@LootUtil.attSpd(perso.loots)</td></tr>
-	<tr><td class=even>Dps</td>
-		<td>@Formula.dps(LootUtil.dmgMin(perso.loots),
+						 perso.resistBonus)</dd>
+	<dt>Bonus dmg</dt><dd>@perso.bonusDmg().movePointRight(2) %</dd>
+	<dt>Chance Crit</dt><dd>@perso.critBase().movePointRight(2)%</dd>
+	<dt>Dmg crit</dt><dd>+ @perso.dmgCritBase().movePointRight(2)%</dd>
+	<dt>Attaque speed</dt><dd>@LootUtil.attSpd(perso.loots)</dd>
+	<dt>Dps</dt>
+		<dd>@Formula.dps(LootUtil.dmgMin(perso.loots),
 	                                            LootUtil.dmgMax(perso.loots),
 	                                            LootUtil.attSpd(perso.loots),
 	                                            perso.bonusDmg(),
 	                                            0,
-	                                            perso.crit,perso.dmgCrit)</td></tr>
-</table>
+	                                            perso.critBase(),
+	                                            perso.dmgCritBase())</dd>
+</dl>

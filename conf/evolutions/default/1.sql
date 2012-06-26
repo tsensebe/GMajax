@@ -24,11 +24,13 @@ create table loot (
   resist_fire               integer,
   resist_lightning          integer,
   resist_poison             integer,
+  perso_id                  bigint,
   constraint pk_loot primary key (id))
 ;
 
 create table perso (
   id                        bigint not null,
+  nom                       varchar(255),
   lvl                       integer,
   str                       integer,
   dex                       integer,
@@ -37,8 +39,6 @@ create table perso (
   main_carac                integer,
   classe                    varchar(255),
   resist_bonus              decimal(38),
-  crit                      decimal(38),
-  dmg_crit                  decimal(38),
   constraint pk_perso primary key (id))
 ;
 
@@ -59,6 +59,8 @@ create sequence perso_seq;
 
 create sequence spell_seq;
 
+alter table loot add constraint fk_loot_perso_1 foreign key (perso_id) references perso (id) on delete restrict on update restrict;
+create index ix_loot_perso_1 on loot (perso_id);
 
 
 
